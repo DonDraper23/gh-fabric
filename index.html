@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GH-Fabric - Premium Women's Wear Fabrics from China</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        .hero .cta {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .hero .cta:hover {
+            background: #d35400;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+        .about {
+            background: #f8f9fa;
+            padding: 60px 20px;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .about-card h3 {
+            color: #e67e22;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .about-card p {
+            color: #555;
+        }
+        .products {
+            background: white;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .product-img {
+            height: 180px;
+            background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .product-info {
+            padding: 25px;
+        }
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .product-info .composition {
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .product-info .features {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .product-info .best-for {
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+        .contact {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .contact h2 {
+            margin-bottom: 30px;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .contact-item {
+            text-align: center;
+        }
+        .contact-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .contact-item .label {
+            color: #e67e22;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .contact .cta {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .contact .cta:hover {
+            background: #d35400;
+        }
+        .footer {
+            background: #1a252f;
+            color: #95a5a6;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            color: #95a5a6;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #e67e22;
+        }
+        .footer p {
+            font-size: 0.9rem;
+        }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            padding: 12px 25px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>GH-FABRIC</h1>
+        <p class="subtitle">Your Trusted Partner for Premium Women's Wear Fabrics</p>
+        <p>Based in Shaoxing, China's textile hub, we partner with top manufacturers to bring you high-quality fabrics for fashion. From design to delivery, we make sourcing simple.</p>
+        <a href="#contact" class="cta">Get in Touch</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">Why Choose GH-Fabric?</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>🏭 Local Expertise</h3>
+                    <p>Based in Shaoxing, Zhejiang — China's textile capital — we have established strong partnerships with top local fabric manufacturers. This gives us unique access to premium products at competitive prices.</p>
+                </div>
+                <div class="about-card">
+                    <h3>✅ Quality Selection</h3>
+                    <p>We meticulously select and review each fabric to ensure quality and performance meet industry standards. Every product in our catalog has passed our rigorous quality control process.</p>
+                </div>
+                <div class="about-card">
+                    <h3>📦 Flexible Supply</h3>
+                    <p>Whether you need samples, small batches, or bulk orders, we offer flexible supply solutions tailored to your specific requirements. No order is too big or too small for us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img">👗</div>
+                <div class="product-info">
+                    <h3>Prada Fabric</h3>
+                    <p class="composition">Composition: 100% Polyester</p>
+                    <p class="features">Features: Soft texture, vibrant colors, excellent wrinkle resistance</p>
+                    <p class="best-for">Best for: High-end fashion clothing</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">🌞</div>
+                <div class="product-info">
+                    <h3>Plasma Fabric</h3>
+                    <p class="composition">Composition: 100% Polyester</p>
+                    <p class="features">Features: Lightweight, breathable, smooth feel, excellent moisture absorption</p>
+                    <p class="best-for">Best for: Summer women's wear</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">🧥</div>
+                <div class="product-info">
+                    <h3>Turkish Fabric</h3>
+                    <p class="composition">Composition: 100% Polyester</p>
+                    <p class="features">Features: Durable, soft hand feel, good breathability</p>
+                    <p class="best-for">Best for: Various daily wear occasions</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">✨</div>
+                <div class="product-info">
+                    <h3>SPH Fabric</h3>
+                    <p class="composition">Composition: High-density Polyester</p>
+                    <p class="features">Features: Unique luster, tight texture, high durability</p>
+                    <p class="best-for">Best for: High-end dresses and evening wear</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">💃</div>
+                <div class="product-info">
+                    <h3>Barbie Fabric</h3>
+                    <p class="composition">Composition: Polyester + Spandex</p>
+                    <p class="features">Features: Rich colors, high elasticity, comfortable fit</p>
+                    <p class="best-for">Best for: Fashionable casual wear, popular among young women</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p style="margin-bottom: 30px;">Ready to source premium fabrics? We'd love to hear from you!</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="icon">📧</div>
+                <div class="label">EMAIL</div>
+                <div>info@gh-fabric.com</div>
+            </div>
+            <div class="contact-item">
+                <div class="icon">💬</div>
+                <div class="label">WHATSAPP</div>
+                <div>+86 139 6754 9919</div>
+            </div>
+            <div class="contact-item">
+                <div class="icon">📍</div>
+                <div class="label">ADDRESS</div>
+                <div>710# Yinan Center, 1088# Jinkeqiaodadao<br>Keqiao, Shaoxing, Zhejiang, China</div>
+            </div>
+        </div>
+        <a href="https://wa.me/8613967549919" class="whatsapp-btn">
+            💬 Chat on WhatsApp
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <p>© 2024 GH-Fabric. All rights reserved. | Premium Women's Wear Fabrics from China</p>
+    </footer>
+
+</body>
+</html>
