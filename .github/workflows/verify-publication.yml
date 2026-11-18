@@ -1,0 +1,39 @@
+name: Verify the live catalogue
+on:
+  schedule:
+    - cron: '33 4 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+concurrency:
+  group: gh-fabric-live-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --omit=dev
+      - name: Verify public pages, product images and contact links
+        run: |
+          mkdir -p ops
+          node scripts/check-live.mjs --record ops/live-catalogue.json
+      - name: Record newly verified catalogue versions and the monthly check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add -- ops/live-catalogue.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: record verified live catalogue'
+          git -c credential.helper= -c 'credential.helper=!gh auth git-credential' pull --rebase origin master
+          git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin HEAD:master
