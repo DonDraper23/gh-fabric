@@ -1,16 +1,32 @@
 name: Publish GH-Fabric
+run-name: ${{ inputs.source == 'wordpress' && 'Publish WordPress update' || 'Publish GH-Fabric' }}
 on:
   push:
     branches: [master]
     paths:
       - 'scripts/**'
       - 'site.css'
+      - 'worker.mjs'
       - 'package*.json'
       - 'wrangler.jsonc'
       - '.github/workflows/cms-reconcile.yml'
   schedule:
     - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
+    inputs:
+      source:
+        description: Publication source
+        type: choice
+        options: [manual, wordpress]
+        default: manual
+      page_id:
+        description: Published WordPress page ID
+        type: string
+        required: false
+      modified:
+        description: WordPress modification time in UTC
+        type: string
+        required: false
 
 permissions:
   contents: read
@@ -22,6 +38,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    env:
+      GHF_WP_FRESH: ${{ inputs.source == 'wordpress' && '1' || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,6 +47,12 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
+      - name: Wait until the WordPress index shows the product update
+        if: inputs.source == 'wordpress'
+        run: node scripts/await-page.mjs
+        env:
+          EDITED_PAGE_ID: ${{ inputs.page_id }}
+          EDITED_PAGE_TIME: ${{ inputs.modified }}
       - name: Check for changes since the last successful publication
         id: compare
         if: github.event_name == 'schedule'

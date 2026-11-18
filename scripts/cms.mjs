@@ -37,7 +37,9 @@ export async function readPages() {
   const pages = [];
   let totalPages = 1;
   for (let n = 1; n <= totalPages; n++) {
-    const response = await get(`${api}/pages?status=publish&per_page=100&orderby=id&order=asc&page=${n}&_fields=${fields}`);
+    const url = new URL(`${api}/pages?status=publish&per_page=100&orderby=id&order=asc&page=${n}&_fields=${fields}`);
+    if (process.env.GHF_WP_FRESH === '1') url.searchParams.set('ghf_sync', Date.now());
+    const response = await get(url);
     const reported = response.headers.get('x-wp-totalpages');
     if (reported === null) throw new Error('WordPress returned an incomplete page index');
     totalPages = Number(reported);
