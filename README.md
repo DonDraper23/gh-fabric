@@ -16,6 +16,6 @@ WordPress 的 `publish_page` 通知会启动 “Publish GH-Fabric”。通知只
 
 每次部署后会从正式域名回读页面、图片、WhatsApp 链接和 www 跳转。发布系统另外每周复查一次，把最新通过验证的月份及版本写入仓库，方便长期核对。
 
-发布通知的接收地址保存在 WordPress 的「工具 → Webhooks」。对应的 GitHub 凭据只限本仓库的 Actions；它和通知校验值储存在此 Worker 的加密设置中。访客访问页面与图片时继续使用静态托管。
+发布通知的接收地址保存在 WordPress 后台的 [Webhooks 设置](https://ghfabriccom.wordpress.com/wp-admin/options-general.php?page=webhooks)。对应的 GitHub 凭据只限本仓库的 Actions；它和通知校验值储存在此 Worker 的加密设置中。访客访问页面与图片时继续使用静态托管。
 
 网站的旧跳转规则名为 `Restore WordPress website`。如果需要恢复旧站，可以在 Cloudflare 重新启用这条规则。域名邮箱记录和卫浴站单独管理。
