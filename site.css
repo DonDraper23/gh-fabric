@@ -1,0 +1,55 @@
+:root {color-scheme: light; --ink:#212d28; --muted:#48584f; --green:#22473d; --paper:#f5f1e9; --white:#fffdf8; --limit:1160px; font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--ink); background:var(--white)}
+*,*::before,*::after {box-sizing:border-box}
+body {margin:0; font-size:17px; line-height:1.55; overflow-wrap:break-word}
+img {max-width:100%; height:auto; display:block}
+a {color:var(--green); text-underline-offset:3px}
+a:focus-visible,summary:focus-visible {outline:3px solid #976439; outline-offset:4px}
+a:hover {text-decoration-thickness:2px}
+.skip {position:absolute;left:12px;top:-100px;background:white;padding:8px 16px;z-index:2}
+.skip:focus {top:5px}
+.site-head,footer {background:var(--paper); padding:18px 5%}
+.site-head nav,.footer-inner,.standard-inner {max-width:var(--limit); margin:auto; display:flex; align-items:center; justify-content:space-between; gap:20px}
+.site-head nav div {display:flex;flex-wrap:wrap;gap:20px;font-size:14px;font-weight:650}
+.brand,.footer-brand {font-family:Georgia,serif;color:var(--ink);font-weight:700;letter-spacing:-1px;line-height:1}
+.brand {font-size:28px;text-decoration:none}
+.footer-brand {font-size:29px;margin:0 0 10px}
+.wp-block-group.alignfull > * {max-width:var(--limit);margin-left:auto;margin-right:auto}
+.wp-block-columns {display:flex;gap:clamp(24px,3.5vw,48px)}
+.wp-block-column {flex:1 1 0;min-width:0}
+.are-vertically-aligned-center {align-items:center}
+.wp-block-column img {margin:0}
+.wp-block-column > a:has(img) {display:block}
+.wp-block-column a:has(img):focus-visible,.fabric-card > a:focus-visible {outline-offset:2px}
+.fabric-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 26px}
+.fabric-card > a {display:block}
+.fabric-card img {width:100%;aspect-ratio:1.24;object-fit:cover;background:#eae6dd}
+.fabric-card > div {padding-top:18px}
+.fabric-card h3,.standard-hero h1,.copy-area h1,.copy-area h2 {margin:0 0 14px;font:400 clamp(1.6rem,2.3vw,2.05rem)/1.1 Georgia,serif;letter-spacing:-.035em}
+.fabric-card p {font-size:16px;color:var(--muted);margin:0 0 12px}
+.card-label,.eyebrow {color:var(--green);font:700 12px/1.6 Arial,sans-serif;letter-spacing:1.3px;margin:0 0 12px}
+.fabric-card .card-label {font-size:12px;color:var(--green)}
+.eyebrow {text-transform:uppercase}
+.button {display:inline-block;background:var(--green);color:white;font-weight:700;font-size:15px;padding:12px 19px;text-decoration:none;border-radius:4px}
+.standard-hero {padding:32px 5% 42px;background:var(--paper)}
+.standard-inner > div {flex:1 1 45%}
+.standard-inner > img {width:50%;max-height:570px;object-fit:contain}
+.standard-hero h1,.copy-area h1 {font-size:clamp(2.6rem,5vw,4.7rem)}
+.copy-area {width:min(90%,860px);margin:42px auto}
+.copy-area figure {margin:20px 0}
+.copy-area img {margin:0 auto}
+.copy-area table {border-collapse:collapse;width:100%}
+.copy-area td,.copy-area th {text-align:left;border-bottom:1px solid #d5d3c8;padding:.65em}
+.copy-area .wp-block-table {overflow-x:auto}
+footer {padding-top:32px;padding-bottom:32px}
+.footer-inner {justify-content:flex-start;gap:8%;font-size:14px}
+.footer-inner > div:first-child {width:55%}
+.footer-inner p:not(.eyebrow,.footer-brand) {margin:4px 0 8px}
+@media(max-width:781px){
+ .wp-block-columns,.standard-inner,.footer-inner {flex-direction:column;align-items:stretch;gap:24px}
+ .wp-block-column {flex-basis:auto!important;width:100%}
+ .fabric-grid {grid-template-columns:1fr;gap:32px}
+ .standard-inner > img,.footer-inner > div:first-child {width:100%}
+ .fabric-card > div {padding-top:14px}
+ .site-head {padding-top:16px;padding-bottom:16px}
+ .site-head nav {gap:10px}
+}

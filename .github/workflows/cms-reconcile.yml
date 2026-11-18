@@ -1,0 +1,44 @@
+name: Publish GH-Fabric
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'scripts/**'
+      - 'site.css'
+      - 'package*.json'
+      - 'wrangler.jsonc'
+      - '.github/workflows/cms-reconcile.yml'
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: gh-fabric-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Check for changes since the last successful publication
+        id: compare
+        if: github.event_name == 'schedule'
+        run: node scripts/revision.mjs --compare >> "$GITHUB_OUTPUT"
+      - name: Build and verify the published catalogue
+        if: github.event_name != 'schedule' || steps.compare.outputs.changed == 'true'
+        run: npm run build && npm run check
+      - name: Deploy to the GH-Fabric Worker
+        if: github.event_name != 'schedule' || steps.compare.outputs.changed == 'true'
+        run: npx --no-install wrangler deploy
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
