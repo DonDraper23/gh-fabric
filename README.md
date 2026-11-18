@@ -14,4 +14,6 @@
 
 GitHub Actions 的 “Publish GH-Fabric” 每 15 分钟计划核对一次 WordPress 首页和公开页面，遇到发布、修改或撤回就重新生成官网，实际时间取决于 GitHub 排队。需要立即发布时，在该流程点击 “Run workflow”。主分支里的站点代码更新也会触发构建。部署凭据存于此仓库的加密设置中，授权范围仅限 Cloudflare 上的 `gh-fabric`。
 
+每次部署后会从正式域名回读页面、图片、WhatsApp 链接和 www 跳转。发布系统另外每周复查一次，把最新通过验证的月份及版本写入仓库，方便长期核对。
+
 网站的旧跳转规则名为 `Restore WordPress website`。如果需要恢复旧站，可以在 Cloudflare 重新启用这条规则。域名邮箱记录和卫浴站单独管理。
